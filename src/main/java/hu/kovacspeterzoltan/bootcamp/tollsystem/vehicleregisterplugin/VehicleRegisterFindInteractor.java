@@ -5,18 +5,18 @@ import hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin.presenter.
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.api.VehicleRegisterPlugInInterface;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.dto.VehicleRegisterRequestDTO;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.dto.VehicleRegisterResponseDTO;
-import hu.kovacspeterzoltan.bootcamp.vehicleregister.api.VehicleRegisterFindAPI;
+import hu.kovacspeterzoltan.bootcamp.vehicleregister.api.VehicleRegisterFindPlugInAPI;
 
-public class VehicleRegisterFindIteractor implements VehicleRegisterPlugInInterface {
-    private VehicleRegisterFindAPI vehicleRegisterFind;
+public class VehicleRegisterFindInteractor implements VehicleRegisterPlugInInterface {
+    private VehicleRegisterFindPlugInAPI vehicleRegisterFind;
     private VehicleRegisterPresenterImp vehicleRegisterPresenter;
     private final PlugInParser parser;
 
-    public VehicleRegisterFindIteractor() {
+    public VehicleRegisterFindInteractor() {
         parser = new PlugInParser();
     }
 
-    public void setVehicleRegisterFindImp(VehicleRegisterFindAPI vehicleRegisterFindImp) {
+    public void setVehicleRegisterFindImp(VehicleRegisterFindPlugInAPI vehicleRegisterFindImp) {
         vehicleRegisterFind = vehicleRegisterFindImp;
     }
 
@@ -26,7 +26,7 @@ public class VehicleRegisterFindIteractor implements VehicleRegisterPlugInInterf
 
     @Override
     public VehicleRegisterResponseDTO findVehicleByRegistrationNumber(VehicleRegisterRequestDTO requestDTO) {
-        vehicleRegisterFind.findVehicleByRegistrationNumber(parser.requestDTOToVehicleRequestJsonString(requestDTO));
+        vehicleRegisterFind.findVehicleByRegistrationNumberPlugIn(parser.requestDTOToVehicleRequestJsonString(requestDTO));
         return vehicleRegisterPresenter.vehicleRegisterResponseDTO;
     }
 }

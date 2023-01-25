@@ -3,9 +3,9 @@ package hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin.presenter
 import hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin.parser.PlugInParser;
 import hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin.validator.PlugInValidator;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.dto.VehicleRegisterResponseDTO;
-import hu.kovacspeterzoltan.bootcamp.vehicleregister.api.VehicleRegisterPresenterInterface;
+import hu.kovacspeterzoltan.bootcamp.vehicleregister.api.VehicleRegisterPresenterPlugInInterface;
 
-public class VehicleRegisterPresenterImp implements VehicleRegisterPresenterInterface {
+public class VehicleRegisterPresenterImp implements VehicleRegisterPresenterPlugInInterface {
     private final PlugInValidator validator;
     private final PlugInParser parser;
     public VehicleRegisterResponseDTO vehicleRegisterResponseDTO;
@@ -16,12 +16,7 @@ public class VehicleRegisterPresenterImp implements VehicleRegisterPresenterInte
     }
 
     @Override
-    public void displayMessage(String s) {
-
-    }
-
-    @Override
-    public void displayJsonResponse(String vehicleRegisterJsonResponse) {
+    public void displayJsonResponsePlugIn(String vehicleRegisterJsonResponse) {
         validator.vehicleRegisterResponseValidator(vehicleRegisterJsonResponse);
         vehicleRegisterResponseDTO = parser.vehicleJsonStringToVehicleRegisterResponseDTO(vehicleRegisterJsonResponse);
     }
